@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Meta Tags -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mastery Learning Coach Lite</title>
+
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="styles.css">
+
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-p4yVZFj7ZVJjp20FsYFt4I+yWUbdu1rvJV+IvE1vH+z3DAH8zAwD1hZcOb6ClKdgWr3Hu0SmtAak3XRtL0Y7Pw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+    <!-- Header -->
+    <header>
+        <h1>Mastery Learning Coach Lite</h1>
+    </header>
+
+    <!-- Confirmation Message -->
+    <div id="message-box" class="message" role="alert" aria-live="assertive"></div>
+
+    <!-- Main Content Wrapper -->
+    <div id="content-wrapper">
+        <!-- Main Content Area -->
+        <main id="main-content" tabindex="-1">
+            <!-- Dynamic content will be injected here -->
+        </main>
+
+        <!-- Footer -->
+        <footer>
+            <div class="button-container">
+                <button id="load-button">
+                    <i class="fas fa-folder-open"></i> Load Data
+                </button>
+                <input type="file" id="load-file" accept=".json" aria-hidden="true" style="display:none;">
+                <button id="save-button" disabled aria-disabled="true">
+                    <i class="fas fa-save"></i> Save Data
+                </button>
+                <button id="reset-button">
+                    <i class="fas fa-redo"></i> Reset
+                </button>
+            </div>
+        </footer>
+
+    </div>
+
+    <!-- JavaScript Code -->
+    <!-- Updated to use type="module" and point to main.js -->
+    <script type="module" src="main.js"></script>
+</body>
+
+</html>

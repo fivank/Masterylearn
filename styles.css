@@ -1,0 +1,599 @@
+/* Color Variables */
+:root {
+    --primary-background: #e2eaee;
+    /* Soft gray */
+    --accent-teal: #1abc9c;
+    /* Vibrant teal */
+    --accent-orange: #e67e22;
+    /* Vibrant orange */
+    --text-color: #333333;
+    /* Dark gray */
+    --button-text: #ffffff;
+    /* White */
+    --shadow-color: rgba(0, 0, 0, 0.1);
+    --success-color: #2ecc71;
+    --error-color: #e74c3c;
+    --dark-bg: #2c3e50;
+    /* Dark blue for title and footer */
+    --green-blue: #51b2db;
+    /* Lighter green with blue tone */
+}
+
+/* General Styles */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--primary-background);
+    color: var(--text-color);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    font-size: 16px;
+}
+
+#content-wrapper {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    min-height: 100vh;
+}
+
+/* Header Styling */
+header {
+    position: fixed;
+    /* Makes the header always stay at the top */
+    top: 0;
+    /* Stays at the very top */
+    left: 0;
+    right: 0;
+    background-color: var(--dark-bg);
+    color: var(--button-text);
+    padding: 20px 10px;
+    text-align: center;
+    flex-shrink: 0;
+    box-shadow: 0 2px 4px var(--shadow-color);
+    z-index: 1000;
+    /* Ensures the header is above other elements */
+}
+
+#content-wrapper {
+    margin-top: 80px;
+    /* Add some margin to prevent content from being hidden behind the header */
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    min-height: 100vh;
+}
+
+
+header h1 {
+    font-size: 2rem;
+    margin-bottom: 5px;
+}
+
+/* Main Content Area */
+main {
+    flex: 1;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    outline: none;
+    overflow-y: auto;
+}
+
+/* Footer Styling */
+footer {
+    background-color: var(--dark-bg);
+    padding: 15px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+    border-top: 1px solid #ddd;
+    box-shadow: 0 -2px 4px var(--shadow-color);
+}
+
+/* Buttons and Inputs */
+button,
+label {
+    padding: 12px 18px;
+    /* Reduced from 16px 24px to approximately 75% */
+    margin: 6px;
+    /* Reduced to keep proportions */
+    font-size: 0.60rem;
+    /* Reduced from 1rem to 0.60rem */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, outline 0.3s ease;
+    background-color: var(--green-blue);
+    color: var(--button-text);
+    min-width: 112.5px;
+    /* Reduced from 150px to 75% */
+}
+
+
+button:hover:not(:disabled),
+label:hover {
+    background-color: #055bb8;
+    /* Slightly darker variant for hover */
+}
+
+button:disabled,
+button[aria-disabled="true"] {
+    background-color: #cccccc;
+    cursor: not-allowed;
+    color: #666666;
+}
+
+label#load-label {
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+}
+
+input[type="file"] {
+    display: none;
+}
+
+/* Forms and Inputs */
+form {
+    background: linear-gradient(135deg, #ffffff, #f0f0f0);
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px var(--shadow-color);
+    max-width: 600px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    font-weight: 600;
+    display: block;
+    margin-bottom: 8px;
+    color: var(--text-color);
+}
+
+input[type="text"],
+select,
+input[type="number"] {
+    width: 100%;
+    padding: 12px 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+}
+
+input[type="text"]:focus,
+select:focus,
+input[type="number"]:focus {
+    border-color: var(--green-blue);
+    outline: none;
+}
+
+/* Message Box Styling */
+.message {
+    position: absolute;
+    top: 80px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(44, 62, 80, 0.8);
+    color: #ffffff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    display: none;
+    z-index: 2000;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    max-width: 80%;
+    text-align: center;
+}
+
+.message.success {
+    background-color: var(--success-color);
+}
+
+.message.error {
+    background-color: var(--error-color);
+}
+
+/* Center container */
+.center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Quiz Styles */
+.quiz-container {
+    width: 100%;
+    max-width: 800px;
+    background: linear-gradient(135deg, #ffffff, #f0f0f0);
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px var(--shadow-color);
+}
+
+.question-number {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+}
+
+.question-text {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+}
+
+.question-score {
+    font-size: 1rem;
+    margin-bottom: 20px;
+}
+
+.options label {
+    display: block;
+    margin-bottom: 10px;
+    font-size: 1.1rem;
+    cursor: pointer;
+}
+
+.options input[type="radio"] {
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+/* Progress Bar */
+.progress-bar-container {
+    width: 100%;
+    height: 20px;
+    background-color: #ddd;
+    border-radius: 10px;
+    overflow: hidden;
+    margin: 20px 0;
+}
+
+.progress-bar {
+    height: 100%;
+    background-color: var(--green-blue);
+    width: 0%;
+    transition: width 0.3s ease;
+}
+
+/* Action Buttons in Quiz */
+.action-buttons {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+/* Results Styles */
+.results-container {
+    width: 100%;
+    max-width: 800px;
+    background: linear-gradient(135deg, #ffffff, #f0f0f0);
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px var(--shadow-color);
+}
+
+.review-item {
+    margin-bottom: 20px;
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #fafafa;
+    word-wrap: break-word;
+}
+
+.review-item.correct {
+    border-left: 5px solid var(--success-color);
+}
+
+.review-item.incorrect {
+    border-left: 5px solid var(--error-color);
+}
+
+.score-summary {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.score-summary span {
+    color: var(--green-blue);
+    font-weight: bold;
+}
+
+.average-stat ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.average-stat ul li {
+    margin-bottom: 10px;
+}
+
+/* User Progress Styles */
+.user-progress-container {
+    width: 100%;
+    max-width: 800px;
+    background: linear-gradient(135deg, #ffffff, #f0f0f0);
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px var(--shadow-color);
+}
+
+.user-progress-container ul {
+    list-style: none;
+    padding-left: 0;
+    margin-bottom: 20px;
+}
+
+.user-progress-container ul li {
+    margin-bottom: 10px;
+}
+
+/* Return Button */
+.return-button {
+    display: block;
+    margin: 20px auto 0 auto;
+    padding: 16px 24px;
+    font-size: 1rem;
+    background-color: var(--green-blue);
+    min-width: 200px;
+}
+
+.return-button:hover {
+    background-color: #16a085;
+}
+
+/* Dashboard Styles */
+.dashboard-container {
+    text-align: center;
+}
+
+.dashboard-container h2 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+
+.dashboard-container p {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+}
+
+.dashboard-container .menu-buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.dashboard-container .menu-buttons button {
+    width: 200px;
+    margin: 10px 0;
+}
+
+/* Settings Styles */
+.settings-container {
+    text-align: center;
+}
+
+.settings-container h2 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+
+.settings-container p {
+    font-size: 1.2rem;
+}
+
+/* Button Row Styles */
+.button-row {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.button-row button {
+    flex: 1;
+    margin: 0 10px;
+}
+
+/* Responsive Styles */
+@media (max-width: 600px) {
+    body {
+        font-size: 14px;
+    }
+
+    header h1 {
+        font-size: 1.5rem;
+    }
+
+    .dashboard-container h2,
+    .quiz-container h2,
+    .results-container h2,
+    .user-progress-container h2,
+    .settings-container h2 {
+        font-size: 1.8rem;
+    }
+
+    .button-group,
+    .action-buttons,
+    .menu-buttons,
+    .button-row {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    button,
+    label {
+        padding: 14px 20px;
+        margin: 8px 0;
+        font-size: 1rem;
+        min-width: 100%;
+    }
+
+    .button-row button {
+        margin: 10px 0;
+    }
+
+    .form-group {
+        margin-bottom: 15px;
+    }
+
+    .quiz-container,
+    .results-container,
+    .user-progress-container {
+        padding: 20px;
+    }
+
+    .return-button {
+        width: 100%;
+        padding: 14px 20px;
+        font-size: 1rem;
+    }
+}
+
+@media (min-width: 601px) and (max-width: 1024px) {
+    body {
+        font-size: 15px;
+    }
+
+    header h1 {
+        font-size: 1.8rem;
+    }
+
+    .dashboard-container h2,
+    .quiz-container h2,
+    .results-container h2,
+    .user-progress-container h2,
+    .settings-container h2 {
+        font-size: 1.9rem;
+    }
+
+    .button-group,
+    .action-buttons,
+    .menu-buttons,
+    .button-row {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    button,
+    label {
+        padding: 15px 22px;
+        margin: 8px;
+        font-size: 1rem;
+        min-width: 150px;
+    }
+
+    .button-row button {
+        margin: 0 10px;
+    }
+
+    .form-group {
+        margin-bottom: 18px;
+    }
+
+    .quiz-container,
+    .results-container,
+    .user-progress-container {
+        padding: 22px;
+    }
+
+    .return-button {
+        width: 200px;
+        padding: 15px 22px;
+        font-size: 1rem;
+    }
+}
+
+@media (min-width: 1025px) {
+    body {
+        font-size: 16px;
+    }
+
+    header h1 {
+        font-size: 2rem;
+    }
+
+    .dashboard-container h2,
+    .quiz-container h2,
+    .results-container h2,
+    .user-progress-container h2,
+    .settings-container h2 {
+        font-size: 2rem;
+    }
+
+    .button-group,
+    .action-buttons,
+    .menu-buttons,
+    .button-row {
+        flex-direction: row;
+        justify-content: center;
+    }
+
+    button,
+    label {
+        padding: 16px 24px;
+        margin: 10px;
+        font-size: 1rem;
+        min-width: 160px;
+    }
+
+    .button-row button {
+        margin: 0 10px;
+    }
+
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+    .quiz-container,
+    .results-container,
+    .user-progress-container {
+        padding: 25px;
+    }
+
+    .return-button {
+        width: 200px;
+        padding: 16px 24px;
+        font-size: 1rem;
+    }
+}
+
+@media (orientation: landscape) {
+
+    .quiz-container,
+    .results-container,
+    .user-progress-container,
+    .settings-container,
+    .dashboard-container {
+        max-width: 90%;
+    }
+}
+
+@media (orientation: portrait) {
+
+    .quiz-container,
+    .results-container,
+    .user-progress-container,
+    .settings-container,
+    .dashboard-container {
+        max-width: 100%;
+    }
+}
